@@ -1,5 +1,6 @@
 package tests;
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.DragAndDropOptions;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import org.junit.jupiter.api.BeforeAll;
@@ -13,7 +14,7 @@ import static com.codeborne.selenide.Selenide.$$;
 
 public class MenuSolutEnt {
     @BeforeAll
-    static void beforeAll() {
+    static void setupConfig() {
         Configuration.browserSize = "1920x1080";
         Configuration.baseUrl = "https://github.com";
         Configuration.pageLoadStrategy = "eager";
@@ -37,6 +38,6 @@ public class MenuSolutEnt {
     @Test
     void dragAndDropTest() {
         open("https://the-internet.herokuapp.com/drag_and_drop");
-        $("#column-a").dragAndDrop($("#column-b"));
+        $("#column-a").dragAndDrop(DragAndDropOptions.to($("#column-b")));
     }
 }
